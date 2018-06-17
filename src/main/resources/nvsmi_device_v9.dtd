@@ -1,0 +1,226 @@
+<!-- nvsmi_device_v9.dtd -->
+<!ELEMENT nvidia_smi_log        (timestamp, driver_version,
+                                 attached_gpus, error_string?, gpu*)>
+
+<!ELEMENT timestamp             (#PCDATA)>
+<!ELEMENT driver_version        (#PCDATA)>
+
+<!ELEMENT attached_gpus         (#PCDATA)>
+
+<!ELEMENT error_string          (#PCDATA)>
+
+<!ELEMENT gpu                   (product_name, product_brand, display_mode,
+                                 display_active,
+                                 persistence_mode,
+                                 accounting_mode,
+                                 accounting_mode_buffer_size,
+                                 driver_model?,
+                                 serial, uuid, minor_number, vbios_version,
+                                 multigpu_board, board_id, gpu_part_number, inforom_version, 
+                                 gpu_operation_mode,
+                                 gpu_virtualization_mode,
+                                 pci,
+                                 fan_speed, performance_state, 
+                                 clocks_throttle_reasons, 
+                                 fb_memory_usage,
+                                 bar1_memory_usage,
+                                 compute_mode, utilization,
+                                 encoder_stats, ecc_mode, ecc_errors,
+                                 retired_pages,
+                                 temperature, power_readings,
+                                 clocks, 
+                                 applications_clocks,
+                                 default_applications_clocks,
+                                 max_clocks,
+                                 max_customer_boost_clocks,
+                                 clock_policy,
+                                 supported_clocks,
+                                 processes,
+                                 accounted_processes)>
+<!ATTLIST gpu id                CDATA #REQUIRED>
+
+<!ELEMENT product_name          (#PCDATA)>
+<!ELEMENT product_brand         (#PCDATA)>
+<!ELEMENT display_mode          (#PCDATA)>
+<!ELEMENT display_active        (#PCDATA)>
+<!ELEMENT persistence_mode      (#PCDATA)>
+<!ELEMENT accounting_mode       (#PCDATA)>
+<!ELEMENT accounting_mode_buffer_size  (#PCDATA)>
+<!ELEMENT driver_model          (current_dm, pending_dm)>
+<!ELEMENT serial                (#PCDATA)>
+<!ELEMENT uuid                  (#PCDATA)>
+<!ELEMENT minor_number          (#PCDATA)>
+<!ELEMENT vbios_version         (#PCDATA)>
+<!ELEMENT multigpu_board        (#PCDATA)>
+<!ELEMENT board_id              (#PCDATA)>
+<!ELEMENT gpu_part_number       (#PCDATA)>
+<!ELEMENT inforom_version            (img_version, oem_object, ecc_object, pwr_object)>
+<!ELEMENT gpu_operation_mode         (current_gom, pending_gom)>
+<!ELEMENT gpu_virtualization_mode    (virtualization_mode)>
+<!ELEMENT inforom_checksum           (#PCDATA)>
+<!ELEMENT pci                   (pci_bus, pci_device, pci_domain,
+                                 pci_device_id, pci_bus_id,
+                                 pci_sub_system_id, pci_gpu_link_info, pci_bridge_chip,
+                                 replay_counter, tx_util, rx_util)>
+<!ELEMENT pci_gpu_link_info     (pcie_gen, link_widths)>
+<!ELEMENT pcie_gen              (max_link_gen, current_link_gen)>
+<!ELEMENT max_link_gen          (#PCDATA)>
+<!ELEMENT current_link_gen      (#PCDATA)>
+<!ELEMENT link_widths           (max_link_width, current_link_width)>
+<!ELEMENT max_link_width        (#PCDATA)>
+<!ELEMENT current_link_width    (#PCDATA)>
+<!ELEMENT pci_bridge_chip       (bridge_chip_type, bridge_chip_fw)>
+<!ELEMENT bridge_chip_type      (#PCDATA)>
+<!ELEMENT bridge_chip_fw        (#PCDATA)>
+<!ELEMENT replay_counter        (#PCDATA)>
+<!ELEMENT tx_util               (#PCDATA)>
+<!ELEMENT rx_util               (#PCDATA)>
+<!ELEMENT fan_speed             (#PCDATA)>
+<!ELEMENT fb_memory_usage       (total, used, free)>
+<!ELEMENT bar1_memory_usage     (total, used, free)>
+<!ELEMENT compute_mode          (#PCDATA)>
+<!ELEMENT encoder_stats         (session_count, average_fps, average_latency)>
+<!ELEMENT ecc_mode              (current_ecc, pending_ecc)>
+<!ELEMENT utilization           (gpu_util, memory_util, encoder_util, decoder_util)>
+<!ELEMENT ecc_errors            (volatile, aggregate)>
+<!ELEMENT retired_pages         (multiple_single_bit_retirement,
+                                 double_bit_retirement,
+                                 pending_retirement)>
+<!ELEMENT temperature           (gpu_temp,
+                                 gpu_temp_max_threshold, gpu_temp_slow_threshold,
+                                 memory_temp)>
+<!ELEMENT power_readings        (power_state, power_management,
+                                 power_draw, power_limit,
+                                 default_power_limit,
+                                 enforced_power_limit,
+                                 min_power_limit, max_power_limit)>
+<!ELEMENT clocks                (graphics_clock, sm_clock, mem_clock, video_clock)>
+<!ELEMENT max_clocks            (graphics_clock, sm_clock, mem_clock, video_clock)>
+<!ELEMENT max_customer_boost_clocks (graphics_clock)>
+<!ELEMENT clock_policy          (auto_boost, auto_boost_default)>
+<!ELEMENT auto_boost            (#PCDATA)>
+<!ELEMENT auto_boost_default    (#PCDATA)>
+<!ELEMENT supported_clocks      (#PCDATA | supported_mem_clock)*>
+<!ELEMENT applications_clocks   (graphics_clock, mem_clock)>
+<!ELEMENT default_applications_clocks (graphics_clock, mem_clock)>
+<!ELEMENT supported_mem_clock   (value | supported_graphics_clock)*>
+<!ELEMENT value                 (#PCDATA)>
+<!ELEMENT supported_graphics_clock (#PCDATA)>
+<!ELEMENT processes             (#PCDATA | process_info)*>
+<!ELEMENT accounted_processes   (#PCDATA | accounted_process_info)*>
+
+<!ELEMENT current_dm            (#PCDATA)>
+<!ELEMENT pending_dm            (#PCDATA)>
+<!ELEMENT img_version           (#PCDATA)>
+<!ELEMENT oem_object            (#PCDATA)>
+<!ELEMENT ecc_object            (#PCDATA)>
+<!ELEMENT pwr_object            (#PCDATA)>
+
+<!ELEMENT current_gom           (#PCDATA)>
+<!ELEMENT pending_gom           (#PCDATA)>
+<!ELEMENT virtualization_mode   (#PCDATA)>
+
+<!ELEMENT pci_bus               (#PCDATA)>
+<!ELEMENT pci_device            (#PCDATA)>
+<!ELEMENT pci_domain            (#PCDATA)>
+<!ELEMENT pci_device_id         (#PCDATA)>
+<!ELEMENT pci_sub_system_id     (#PCDATA)>
+<!ELEMENT pci_bus_id            (#PCDATA)>
+
+<!ELEMENT total                 (#PCDATA)>
+<!ELEMENT used                  (#PCDATA)>
+<!ELEMENT free                  (#PCDATA)>
+
+<!ELEMENT session_count         (#PCDATA)>
+<!ELEMENT average_fps           (#PCDATA)>
+<!ELEMENT average_latency       (#PCDATA)>
+
+<!ELEMENT current_ecc           (#PCDATA)>
+<!ELEMENT pending_ecc           (#PCDATA)>
+
+<!ELEMENT gpu_util              (#PCDATA)>
+<!ELEMENT memory_util           (#PCDATA)>
+<!ELEMENT encoder_util          (#PCDATA)>
+<!ELEMENT decoder_util          (#PCDATA)>
+
+<!ELEMENT volatile              (single_bit, double_bit)>
+
+<!ELEMENT single_bit            (device_memory, register_file,
+                                 l1_cache, l2_cache, texture_memory,
+                                 texture_shm, cbu, total)>
+<!ELEMENT double_bit            (device_memory, register_file,
+                                 l1_cache, l2_cache, texture_memory,
+                                 texture_shm, cbu, total)>
+
+<!ELEMENT pending_retirement    (#PCDATA)>
+
+<!ELEMENT multiple_single_bit_retirement
+                                (retired_count, retired_page_addresses)>
+<!ELEMENT double_bit_retirement (retired_count, retired_page_addresses)>
+
+<!ELEMENT retired_count         (#PCDATA)>
+<!ELEMENT retired_page_addresses
+                                (#PCDATA | retired_page_address)*>
+<!ELEMENT retired_page_address  (#PCDATA)>
+
+
+<!ELEMENT device_memory         (#PCDATA)>
+<!ELEMENT register_file         (#PCDATA)>
+<!ELEMENT l1_cache              (#PCDATA)>
+<!ELEMENT l2_cache              (#PCDATA)>
+<!ELEMENT texture_memory        (#PCDATA)>
+<!ELEMENT texture_shm           (#PCDATA)>
+<!ELEMENT cbu                   (#PCDATA)>
+
+<!ELEMENT aggregate             (single_bit, double_bit)>
+
+<!ELEMENT gpu_temp              (#PCDATA)>
+<!ELEMENT gpu_temp_max_threshold (#PCDATA)>
+<!ELEMENT gpu_temp_slow_threshold (#PCDATA)>
+<!ELEMENT memory_temp (#PCDATA)>
+
+<!-- power_state is deprecated in favor of performance_state -->
+<!ELEMENT power_state           (#PCDATA)>
+
+<!ELEMENT power_management      (#PCDATA)>
+<!ELEMENT power_draw            (#PCDATA)>
+<!ELEMENT power_limit           (#PCDATA)>
+<!ELEMENT default_power_limit   (#PCDATA)>
+<!ELEMENT enforced_power_limit   (#PCDATA)>
+<!ELEMENT min_power_limit       (#PCDATA)>
+<!ELEMENT max_power_limit       (#PCDATA)>
+
+<!ELEMENT graphics_clock        (#PCDATA)>
+<!ELEMENT sm_clock              (#PCDATA)>
+<!ELEMENT mem_clock             (#PCDATA)>
+<!ELEMENT video_clock           (#PCDATA)>
+
+<!ELEMENT performance_state     (#PCDATA)>
+
+<!ELEMENT clocks_throttle_reasons  (#PCDATA|
+                                    clocks_throttle_reason_gpu_idle|
+                                    clocks_throttle_reason_applications_clocks_setting|
+                                    clocks_throttle_reason_sw_power_cap|
+                                    clocks_throttle_reason_hw_slowdown|
+                                    clocks_throttle_reason_sync_boost|
+                                    clocks_throttle_reason_unknown)*>
+<!ELEMENT clocks_throttle_reason_gpu_idle              (#PCDATA)>
+<!ELEMENT clocks_throttle_reason_applications_clocks_setting (#PCDATA)>
+<!ELEMENT clocks_throttle_reason_sw_power_cap          (#PCDATA)>
+<!ELEMENT clocks_throttle_reason_hw_slowdown           (#PCDATA)>
+<!ELEMENT clocks_throttle_reason_sync_boost            (#PCDATA)>
+<!ELEMENT clocks_throttle_reason_unknown               (#PCDATA)>
+
+<!ELEMENT process_info          (pid, type, process_name, used_memory)>
+
+<!ELEMENT pid                   (#PCDATA)>
+<!ELEMENT type                  (#PCDATA)>
+<!ELEMENT process_name          (#PCDATA)>
+<!ELEMENT used_memory           (#PCDATA)>
+<!ELEMENT is_running            (#PCDATA)>
+
+<!ELEMENT accounted_process_info (pid, gpu_util, memory_util, max_memory_usage, time, is_running)>
+
+<!ELEMENT max_memory_usage      (#PCDATA)>
+<!ELEMENT time                  (#PCDATA)>
+

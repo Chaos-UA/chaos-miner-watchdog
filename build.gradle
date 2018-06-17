@@ -1,0 +1,55 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+
+
+}
+
+plugins {
+	id 'net.ltgt.apt' version '0.10'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.chaos.crypto.ewbf.watchdog'
+version = '1'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// lombok
+	compileOnly 'org.projectlombok:lombok:1.16.20'
+	apt "org.projectlombok:lombok:1.16.20"
+
+	//compile('org.springframework.boot:spring-boot-starter');
+	compile('org.springframework.boot:spring-boot-starter-web');
+	testCompile('org.springframework.boot:spring-boot-starter-test');
+
+	String jacksonVersion = "2.9.4";
+    compile ("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+	compile ("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}");
+    compile ("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}");
+
+	compile group: 'org.apache.commons', name: 'commons-exec', version: '1.3'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+	compile group: 'commons-io', name: 'commons-io', version: '2.5'
+
+	//to work on jdk9
+	compile 'javax.xml.bind:jaxb-api:2.3.0'
+	compile 'com.sun.xml.bind:jaxb-impl:2.3.0'
+	compile 'org.glassfish.jaxb:jaxb-runtime:2.3.0'
+	compile 'javax.activation:activation:1.1.1'
+
+
+}
